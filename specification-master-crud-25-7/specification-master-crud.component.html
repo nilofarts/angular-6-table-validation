@@ -1,0 +1,121 @@
+
+ <div class="wrapper">
+   <div class="col-lg-12">
+      <div class="table-responsive">
+      <table class="table table-bordered">
+        <thead class="text-nowrap">
+          <tr>
+            <th rowspan="2" class="align-middle" title="Required Parameters (UOM)"> Required <br>Parameters
+              <span>(UOM)</span></th>
+            <th title="tolarance" colspan="2" class="text-center" title="Tolarance">Tolerance</th>
+            <th title="values" colspan="3" class="text-center" title="Values">Values</th>
+            <th rowspan="2" class="align-middle" title="Mandatory">Mandatory</th>
+            <th rowspan="2" class="align-middle" title="Sample Required">Sample<br> Required</th>
+            <th rowspan="2" class="align-middle" title="No of Samples">No of<br> Samples</th>
+            <th rowspan="2" class="align-middle" title="Validity">Validity</th>
+            <th rowspan="2" class="align-middle" title="Validity date and time">Validity DATE<br> and time
+            </th>
+            <th rowspan="2" class="align-middle" title="Version">Version</th>
+          </tr>
+          <tr>
+            <th class="text-center" title="Min %">Min %</th>
+            <th class="text-center" title="Max %">Max %</th>
+            <th class="text-center" title="Min">Min</th>
+            <th class="text-center" title="Aim">Aim</th>
+            <th class="text-center" title="Max">Max</th>
+          </tr>
+        </thead>
+        <tbody class="text-nowrap">
+         <tr *ngFor="let specification of specificationList;index as i" (click)="onClickSelectedRow(i)"
+         [class.selected]="i==selectedIndex">
+        <!-- <td><input [readOnly]="!edit"  type="text" [(ngModel)]="specification.requiredParameters"></td> -->
+        <td [class.has-error]="requiredParameters.invalid && requiredParameters.touched" [class.has-success]="requiredParameters.valid">
+					<input [readOnly]="!edit" type="text" [(ngModel)]="specification.requiredParameters" #requiredParameters="ngModel" required name="requiredParameters"	>
+					<span class="help-block" *ngIf="requiredParameters.errors?.required && requiredParameters.touched">
+						requiredParameters is required
+					</span>
+        </td>
+        <td [class.has-error]="tolMin.invalid && tolMin.touched" [class.has-success]="tolMin.valid">
+					<input [readOnly]="!edit" type="number" [(ngModel)]="specification.tolMin" #tolMin="ngModel" required name="tolMin"	>
+					<span class="help-block" *ngIf="tolMin.errors?.required && tolMin.touched">
+						tolMin is required
+					</span>
+        </td>
+        <td [class.has-error]="tolMax.invalid && tolMax.touched" [class.has-success]="tolMax.valid">
+					<input [readOnly]="!edit" type="number" [(ngModel)]="specification.tolMax" #tolMax="ngModel" required name="tolMax"	>
+					<span class="help-block" *ngIf="tolMax.errors?.required && tolMax.touched">
+						tolMax is required
+					</span>
+        </td>
+        <td [class.has-error]="valuesMIN.invalid && valuesMIN.touched" [class.has-success]="valuesMIN.valid">
+					<input [readOnly]="!edit" type="number" [(ngModel)]="specification.valuesMIN" #valuesMIN="ngModel" required name="valuesMIN"	>
+					<span class="help-block" *ngIf="valuesMIN.errors?.required && valuesMIN.touched">
+						valuesMIN is required
+					</span>
+        </td>
+        <td [class.has-error]="valuesAim.invalid && valuesAim.touched" [class.has-success]="valuesAim.valid">
+					<input [readOnly]="!edit" type="number" [(ngModel)]="specification.valuesAim" #valuesAim="ngModel" required name="valuesAim"	>
+					<span class="help-block" *ngIf="valuesAim.errors?.required && valuesAim.touched">
+						valuesAim is required
+					</span>
+        </td>
+        <td [class.has-error]="valuesMAX.invalid && valuesMAX.touched" [class.has-success]="valuesMAX.valid">
+					<input [readOnly]="!edit" type="number" [(ngModel)]="specification.valuesMAX" #valuesMAX="ngModel" required name="valuesMAX"	>
+					<span class="help-block" *ngIf="valuesMAX.errors?.required && valuesMAX.touched">
+						valuesMAX is required
+					</span>
+        </td>
+        <td [class.has-error]="mandatory.invalid && mandatory.touched" [class.has-success]="mandatory.valid">
+					<input [readOnly]="!edit" type="number" [(ngModel)]="specification.mandatory" #mandatory="ngModel" required name="mandatory"	>
+					<span class="help-block" *ngIf="mandatory.errors?.required && mandatory.touched">
+						mandatory is required
+					</span>
+        </td>
+        <td [class.has-error]="sampleRequired.invalid && sampleRequired.touched" [class.has-success]="sampleRequired.valid">
+					<input [readOnly]="!edit" type="number" [(ngModel)]="specification.sampleRequired" #sampleRequired="ngModel" required name="sampleRequired"	>
+					<span class="help-block" *ngIf="sampleRequired.errors?.required && sampleRequired.touched">
+						sampleRequired is required
+					</span>
+        </td>
+        <td [class.has-error]="noOfSamples.invalid && noOfSamples.touched" [class.has-success]="noOfSamples.valid">
+					<input [title]="(noOfSamples.errors?.required && noOfSamples.touched) ? '	noOfSamples is required' : ''" [readOnly]="!edit" type="number" [(ngModel)]="specification.noOfSamples" #noOfSamples="ngModel" required name="noOfSamples"	>
+					<span class="help-block" *ngIf="noOfSamples.errors?.required && noOfSamples.touched">
+						noOfSamples is required
+					</span>
+        </td>
+        <td [class.has-error]="validity.invalid && validity.touched" [class.has-success]="validity.valid">
+          <input [title]="(validity.errors?.required && validity.touched) ? 'validity is required' : ''" [readOnly]="!edit" type="text" [(ngModel)]="specification.validity" #validity="ngModel" required name="validity"
+          maxlength="8" onkeydown="return /[a-z]/i.test(event.key)"	>
+					<span class="help-block" *ngIf="validity.errors?.required && validity.touched">
+						validity is required
+					</span>
+        </td>
+        <td [class.has-error]="validityDateTime.invalid && validityDateTime.touched" [class.has-success]="validityDateTime.valid">
+					<input [readOnly]="!edit" type="text" [(ngModel)]="specification.validityDateTime" #validityDateTime="ngModel" required name="validityDateTime"	>
+					<span class="help-block" *ngIf="validityDateTime.errors?.required && validityDateTime.touched">
+						validityDateTime is required
+					</span>
+        </td>
+        <td [class.has-error]="version.invalid && version.touched" [class.has-success]="version.valid">
+					<input [readOnly]="!edit" type="text" [(ngModel)]="specification.version" #version="ngModel" required name="version"	>
+					<span class="help-block" *ngIf="version.errors?.required && version.touched">
+						version is required
+					</span>
+        </td>
+
+         </tr>
+        </tbody>
+      </table>
+
+
+  </div>
+</div>
+  <div class="popBtn text-right col-lg-12 ">
+    <button name="submit" class="btn" title="Add" value="ngSubmit" (click)="onAdd()">Add New</button>
+    <button name="submit" class="btn" title="Save" value="ngSubmit" (click)="onSave()">Save</button>
+    <button name="submit" class="btn" title="Edit" value="ngSubmit" (click)="onEdit()">Edit</button>
+    <button name="submit" class="btn" title="Edit" value="ngSubmit" (click)="onUpdate()">Update</button>
+    <button name="submit" class="btn" title="Delete" value="ngSubmit" (click)="onDelete()">Delete</button>
+
+</div>
+  </div>

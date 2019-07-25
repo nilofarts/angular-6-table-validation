@@ -1,0 +1,55 @@
+.table th{
+    background: linear-gradient(to bottom, #3390a1 0%, #64bccc 100%);
+    color: #FFF;
+    text-transform: uppercase;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.selected td{
+    background: #ffefa7;
+
+}
+ td{
+    background:#FFF;
+    outline: none;
+}
+.popBtn button{
+    background: #3b6676;
+    margin:2px;
+    color:#FFF;
+}
+.wrapper{
+    margin: 35px ;
+    margin-right: 35px;
+    /* overflow:hidden; */
+}
+input{
+    border:none;
+    background: transparent;
+    width:100%;
+    font-size: 12px;
+}
+table {
+    border-collapse: collapse;
+}
+table, th, td {
+    border: 1px solid black;
+}
+.error {
+    color: red;
+}
+.success {
+    color: green;
+}
+label{
+    font-size:18px;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+input[type=number] {
+    -moz-appearance:textfield; /* Firefox */
+}
